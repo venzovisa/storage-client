@@ -6,16 +6,16 @@ import AddOrder from './components/orders/addOrder';
 import {UpdateOrder} from './components/orders/updateOrder';
 import {UpdateProduct} from './components/products/updateProduct';
 import {AddProduct} from './components/products/addProduct';
+import {User} from './components/user/user';
 import NavBar from './components/navbar';
 import Home from './components/home';
-import Customers from './components/customers/customers';
 import NotFound from './components/notfound';
 import './App.css';
 import LoginForm from './components/login';
 import Logout from './components/logout';
 import RegisterForm from './components/register';
 import {Col, Container, Row} from 'reactstrap';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { getUser } from './utils/auth';
 import ProtectedRoute from "./components/protectedRoutes";
 
@@ -45,8 +45,8 @@ class App extends Component {
                             <ProtectedRoute path="/addProduct/" component={AddProduct} />
                             <ProtectedRoute path="/orders" component={Orders} />
                             <ProtectedRoute path="/addOrder" component={AddOrder} />
+                            <ProtectedRoute path="/user" component={User} />
                             <Route path="/products" component={Products} />
-                            <Route path="/customers" component={Customers} />
                             <Route path="/login" component={LoginForm} />
                             <Route path="/logout" component={Logout} />
                             <Route path="/register" component={RegisterForm} />

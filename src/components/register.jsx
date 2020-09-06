@@ -1,23 +1,35 @@
 import React from 'react';
 import Form from './form';
 import Joi from 'joi-browser';
+import AlertBox from './alerts/alerts';
+import axios from 'axios'; 
 
 export default class RegisterForm extends Form {
 
     state = {
-        form: {username: "", password: "", name: ""},
+        form: { email: "", password: "", name: "" },
+        userExist: false,
         errors: {}
     };
 
     schema = {
-        username: Joi.string().email().required().label("Username"),
+        email: Joi.string().trim().email().required().label("E-Mail"),
         password: Joi.string().trim().truncate().required().min(5).label("Password"),
-        name: Joi.string().required().label("Name")
+        name: Joi.string().trim().required().label("Name")
     };
 
-    doSubmit = () => {
-        // Call to server
-        console.log("Submitted");
+    doSubmit = () => {          
+        axios.post('http://localhost:3000/register', JSON.stringify(this.state.form), {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => {
+            if (res.status === 400) this.setState({ userExist: true })
+            else window.location = '/';
+            }).catch(err => {
+                this.setState({ userExist: true });
+                throw err
+        });            
     };
 
     render() {
@@ -27,12 +39,12 @@ export default class RegisterForm extends Form {
                 <h1>Регистриране</h1>
 
                 <form onSubmit={this.handleSubmit}>
-                    {this.renderInput("username", "Username","email")}
+                    {this.renderInput("email", "E-Mail","email")}
                     {this.renderInput("password", "Password", "password")}
                     {this.renderInput("name", "Name")}
                     {this.renderButton("Register")}
                 </form>
-
+                {this.state.userExist && <AlertBox alertMessage={"User already registered!"} color="info" />}
             </React.Fragment>
 
         );

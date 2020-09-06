@@ -2,12 +2,14 @@ import React from 'react';
 import Form from './form';
 import Joi from 'joi-browser';
 import fetch from "node-fetch";
+import AlertBox from './alerts/alerts';
 
 export default class LoginForm extends Form {
 
     state = {
       form: {email: "", password: ""},
-      errors: {}
+      errors: {},
+      loginFailed: false
     };
 
     schema = {
@@ -21,7 +23,10 @@ export default class LoginForm extends Form {
             body:    JSON.stringify(this.state.form),
             headers: {'Content-Type': 'application/json'},
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 400) this.setState({ loginFailed: true });
+                return res.json();
+            })
             .then(json => {
                 console.log(json);
                 localStorage.setItem('authToken', json.authToken);
@@ -34,7 +39,6 @@ export default class LoginForm extends Form {
                if (err.response && err.response.status === 400){
                    const errors = {...this.state.errors};
                    errors.username = err.response.data;
-
                    this.setState({ errors });
                }
             });
@@ -50,6 +54,7 @@ export default class LoginForm extends Form {
                     {this.renderInput("password", "Password", "password")}
                     {this.renderButton("Login")}
                 </form>
+                {this.state.loginFailed && <AlertBox alertMessage={"Invalid username or password"} color="info" />}
             </React.Fragment>
 
         );

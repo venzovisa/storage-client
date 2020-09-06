@@ -94,7 +94,7 @@ class AddOrder extends Component {
                     </Table>
                     { this.state.selectedProducts.length === 0 && <AlertBox alertMessage={"Няма избрани продукти"} className="alert-info"/>}
                 </Col>
-                <Col xs="12" className="text-center mb-5">
+                <Col xs="12" className="text-right mb-5">
                     <Button
                         btnValue={"Изпрати"}
                         btnClass={"btn-success"}

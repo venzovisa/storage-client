@@ -4,7 +4,7 @@ import Product from './product';
 import LoadingBar from '../alerts/loadingBar';
 import axios from 'axios';
 import { getUser } from "../../utils/auth";
-import Button from "../button";
+import ButtonLink from "../buttonLink";
 
 class Products extends Component {
 
@@ -15,7 +15,7 @@ class Products extends Component {
 
     handleDelete = async productID => {
         try {
-            if (getUser()){
+            if (this.state.user){
                 // Remove product from state
                 const products = this.state.products.filter(p => p._id !== productID);
                 this.setState({products});
@@ -35,6 +35,13 @@ class Products extends Component {
 
     async componentDidMount(){
         try {
+            this.setState({user: getUser()});
+        }
+            catch(e) {
+            console.error(e);
+        }
+
+        try {
             const response = await axios.get('http://localhost:3000/products');
             this.setState({products: response.data, loadingBar: false})
         }
@@ -53,9 +60,9 @@ class Products extends Component {
                 <Col xs="12">
                     {this.state.loadingBar && <LoadingBar/>}
                 </Col>
-                <Col xs="12">
-                    <a href={`/addProduct`} title="Add product" className="btn btn-success mb-2">+ Добави продукт</a>
-                </Col>
+                {this.state.user && <Col xs="12">
+                    <ButtonLink href={`/addProduct`} title={"+ Add product"} className={"btn-success mb-2"} />
+                </Col>}
             </Row>
         </React.Fragment>
     }

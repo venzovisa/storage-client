@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { Container } from 'reactstrap';
 
 export default class Example extends React.Component {
 
     render() {
         return (
-            <div>
+            <Container>
                 <nav className="navbar navbar-expand-md navbar-light bg-light">
                     <Link className="navbar-brand" to="/">
                         Складтроник
@@ -25,14 +26,14 @@ export default class Example extends React.Component {
                                 <NavLink to="/register" className="nav-item nav-link">Регистриране</NavLink>
                             </React.Fragment>}
                             {this.props.user && <React.Fragment>
-                                <NavLink to="/me" className="nav-item nav-link">{this.props.user.email}</NavLink>
+                                <NavLink to="/user" className="nav-item nav-link">{this.props.user.email}</NavLink>
                                 <NavLink to="/logout" className="nav-item nav-link" >Изход</NavLink>
                             </React.Fragment>}
 
                         </div>
                     </div>
                 </nav>
-            </div>
+            </Container>
         );
     }
 }

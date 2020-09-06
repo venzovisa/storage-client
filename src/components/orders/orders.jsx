@@ -15,7 +15,7 @@ class Orders extends Component {
         movies: [],
         emptyProducts: false,
         selectedGenre: 'All',
-        pageSize: 4,
+        pageSize: 10,
         currentPage: 1,
         sortCriteria: 'genre',
         sortOrder: 'asc',
@@ -87,7 +87,6 @@ class Orders extends Component {
             this.setState({btnSubmit: true});
             // Update order status
             this.setState({orderStatus});
-            console.log(newOrderStatus);
             const response = await axios.post(`http://localhost:3000/update_order_status`, newOrderStatus);
             if (response.status === 200) this.setState({btnSubmit: false});
         }
