@@ -29,7 +29,7 @@ export default class LoginForm extends Form {
             })
             .then(json => {
                 console.log(json);
-                localStorage.setItem('authToken', json.authToken);
+                sessionStorage.setItem('authToken', json.authToken);
                 //this.props.history.push('/');
                 // full page reload required
                 window.location = '/';

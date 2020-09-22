@@ -20,7 +20,8 @@ export default class Example extends React.Component {
                         <div className="navbar-nav">
                                 <NavLink to="/products" className="nav-item nav-link">Продукти</NavLink>
                                 <NavLink to="/orders" className="nav-item nav-link">Поръчки</NavLink>
-                                <NavLink to="/addOrder" className="nav-item nav-link">Нова Поръчка</NavLink>
+                            <NavLink to="/addOrder" className="nav-item nav-link">Нова Поръчка</NavLink>
+                            <NavLink to="/chat" className="nav-item nav-link">Чат</NavLink>
                             {!this.props.user && <React.Fragment>
                                 <NavLink to="/login" className="nav-item nav-link">Вписване</NavLink>
                                 <NavLink to="/register" className="nav-item nav-link">Регистриране</NavLink>

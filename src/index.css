@@ -132,3 +132,27 @@ code {
         transform-origin: center center;
     }
 }
+
+/* #region Chat feature */
+.message-box {
+    margin-top: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+.message-item {
+    margin-bottom: 0.5rem;
+    padding: 0.375rem 0.75rem ;
+    width: 100%;
+    list-style: none;
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+}
+
+.message-date {
+    font-size: .75rem;
+}
+/* #endregion Chat feature */

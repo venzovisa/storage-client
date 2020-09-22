@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 class Logout extends Component {
     componentDidMount() {
-        localStorage.removeItem('authToken');
+        sessionStorage.removeItem('authToken');
         window.location = '/';
     }
 

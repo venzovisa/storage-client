@@ -2,10 +2,11 @@ import jwtDecode from "jwt-decode";
 
 export function getUser() {
     try {
-        const jwt = localStorage.getItem('authToken');
+        const jwt = sessionStorage.getItem('authToken');
         return jwtDecode(jwt);
-    } catch (ex) {}
-
+    } catch (ex) {
+        console.log("Not logged");
+    }
 }
 
 

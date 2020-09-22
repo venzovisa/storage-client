@@ -19,7 +19,7 @@ export default class UserForm extends Form {
         try {
             const response = await axios.post(`http://localhost:3000/user`,  this.state.form,  {
                 headers: {
-                    'Auth-Token': window.localStorage.authToken
+                    'Auth-Token': window.sessionStorage.authToken
                 }
             });
             if (response.status === 200) {

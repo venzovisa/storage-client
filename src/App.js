@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import Chat from './components/chat/chat';
 import Orders from './components/orders/orders';
-import TestForm from './components/testForm';
 import Products from './components/products/products';
 import AddOrder from './components/orders/addOrder';
 import {UpdateOrder} from './components/orders/updateOrder';
@@ -32,6 +32,7 @@ class App extends Component {
     };
 
     render() {
+
         return (
             <React.Fragment>
             <NavBar user={this.state.user}/>
@@ -39,7 +40,6 @@ class App extends Component {
                 <Row>
                     <Col xs="12">
                         <Switch>
-                            <Route path="/testForm" component={TestForm} />
                             <Route path="/orders/:id" component={UpdateOrder} />
                             <ProtectedRoute path="/updateProduct/:id" component={UpdateProduct} />
                             <ProtectedRoute path="/addProduct/" component={AddProduct} />
@@ -47,6 +47,7 @@ class App extends Component {
                             <ProtectedRoute path="/addOrder" component={AddOrder} />
                             <ProtectedRoute path="/user" component={User} />
                             <Route path="/products" component={Products} />
+                            <ProtectedRoute path="/chat" component={Chat} />
                             <Route path="/login" component={LoginForm} />
                             <Route path="/logout" component={Logout} />
                             <Route path="/register" component={RegisterForm} />

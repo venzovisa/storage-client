@@ -20,7 +20,7 @@ class Products extends Component {
                 const products = this.state.products.filter(p => p._id !== productID);
                 this.setState({products});
                 const response = await axios.delete(`http://localhost:3000/delete_product/${productID}`, {
-                    headers: {'Auth-Token': window.localStorage.authToken}
+                    headers: {'Auth-Token': window.sessionStorage.authToken}
                 });
                 console.log(response.data);
             } else {

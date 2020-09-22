@@ -29,7 +29,7 @@ class Orders extends Component {
         try {
             const response = await axios.get('http://localhost:3000/orders', {
                 headers: {
-                    'Auth-Token': window.localStorage.authToken
+                    'Auth-Token': window.sessionStorage.authToken
                 }
             });
             if (response) this.setState({movies: response.data, loadingBar: false});
