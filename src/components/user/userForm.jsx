@@ -17,7 +17,7 @@ export default class UserForm extends Form {
 
     doSubmit = async () => {
         try {
-            const response = await axios.post(`${process.env.api_url}/user`,  this.state.form,  {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/user`,  this.state.form,  {
                 headers: {
                     'Auth-Token': window.sessionStorage.authToken
                 }
