@@ -27,7 +27,7 @@ class Orders extends Component {
 
     async componentDidMount(){
         try {
-            const response = await axios.get(`${process.env.api_url}/orders`, {
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/orders`, {
                 headers: {
                     'Auth-Token': window.sessionStorage.authToken
                 }
@@ -44,7 +44,7 @@ class Orders extends Component {
         let movies = this.state.movies.filter(m => m.id !== selectedMovie.id);
         this.setState({movies});
         try {
-            const response = await axios.delete(`${process.env.api_url}/delete_order/${selectedMovie.id}`, {
+            const response = await axios.delete(`${process.env.REACT_APP_API_URL}/delete_order/${selectedMovie.id}`, {
                 headers: {
                     'Auth-Token': window.localStorage.authToken
                 }
@@ -87,7 +87,7 @@ class Orders extends Component {
             this.setState({btnSubmit: true});
             // Update order status
             this.setState({orderStatus});
-            const response = await axios.post(`${process.env.api_url}/update_order_status`, newOrderStatus);
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/update_order_status`, newOrderStatus);
             if (response.status === 200) this.setState({btnSubmit: false});
         }
         catch (e) {

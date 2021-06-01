@@ -19,7 +19,7 @@ export default class ProductForm extends Form {
 
     async componentDidMount(){
         try {
-            const response = await axios.get(`${process.env.api_url}/get_product/${this.props.productID}`);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/get_product/${this.props.productID}`);
             await this.setState({form: response.data});
         }
         catch (err) {
@@ -56,7 +56,7 @@ export default class ProductForm extends Form {
 
     doSubmit = async () => {
         try {
-            const response = await axios.post(`${process.env.api_url}/update_product/${this.props.productID}`, this.state.form);
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/update_product/${this.props.productID}`, this.state.form);
             if (response.status === 200) {
                 console.log('Product updated.');
                 return this.props.history.push("/products");

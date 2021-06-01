@@ -27,7 +27,7 @@ export default class ChatForm extends Form {
     interval = () => {
         setInterval(async () => {
             try {
-                const response = await axios.get(`${process.env.api_url}/chat`);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/chat`);
                 this.setState({ form: response.data });
             }
             catch (err) {
@@ -79,7 +79,7 @@ export default class ChatForm extends Form {
         form.push(newMessage);
         this.setState({ form });
   
-        axios.post(`${process.env.api_url}/chat`, JSON.stringify({
+        axios.post(`${process.env.REACT_APP_API_URL}/chat`, JSON.stringify({
             status: "public",
             message: newMessage
         }), {
