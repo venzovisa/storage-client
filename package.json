@@ -12,7 +12,7 @@
     "dotenv": "^8.0.0",
     "font-awesome": "^4.7.0",
     "joi-browser": "^13.4.0",
-    "jquery": "^1.9.1",
+    "jquery": "^3.5.0",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.21",
     "node-fetch": "^2.6.1",
