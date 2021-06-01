@@ -19,7 +19,7 @@ export default class RegisterForm extends Form {
     };
 
     doSubmit = () => {          
-        axios.post('http://localhost:3000/register', JSON.stringify(this.state.form), {
+        axios.post(`${process.env.api_url}/register`, JSON.stringify(this.state.form), {
             headers: {
                 'Content-Type': 'application/json'
             }

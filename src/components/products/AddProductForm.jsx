@@ -48,7 +48,7 @@ export default class ProductForm extends Form {
 
     doSubmit = async () => {
         try {
-            const response = await axios.post(`http://localhost:3000/add_product`, this.state.form);
+            const response = await axios.post(`${process.env.api_url}/add_product`, this.state.form);
             if (response.status === 200) {
                 console.log('Product added.');
                 return this.props.history.push("/products");

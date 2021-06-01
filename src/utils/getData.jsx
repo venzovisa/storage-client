@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
 export const getData = () => {
-    fetch('http://localhost:3000')
+    fetch(process.env.api_url)
         .then(res => res.json())
         .then(json => json);
 };

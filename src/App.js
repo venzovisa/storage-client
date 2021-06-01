@@ -19,7 +19,6 @@ import { Route, Switch } from 'react-router-dom';
 import { getUser } from './utils/auth';
 import ProtectedRoute from "./components/protectedRoutes";
 
-
 class App extends Component {
 
     state = {};

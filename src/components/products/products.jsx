@@ -19,7 +19,7 @@ class Products extends Component {
                 // Remove product from state
                 const products = this.state.products.filter(p => p._id !== productID);
                 this.setState({products});
-                const response = await axios.delete(`http://localhost:3000/delete_product/${productID}`, {
+                const response = await axios.delete(`${process.env.api_url}/delete_product/${productID}`, {
                     headers: {'Auth-Token': window.sessionStorage.authToken}
                 });
                 console.log(response.data);
@@ -42,7 +42,7 @@ class Products extends Component {
         }
 
         try {
-            const response = await axios.get('http://localhost:3000/products');
+            const response = await axios.get(`${process.env.api_url}/products`);
             this.setState({products: response.data, loadingBar: false})
         }
         catch (e){

@@ -17,7 +17,7 @@ export default class MovieForm extends Form {
 
     async componentDidMount(){
         try {
-            let response = await fetch('http://localhost:3001/get_movie', {
+            let response = await fetch(`${process.env.api_url}/get_movie`, {
                 method: 'post',
                 body: JSON.stringify({movieID: this.state.movieID}),
                 headers: { 'Content-Type': 'application/json' }
@@ -49,7 +49,7 @@ export default class MovieForm extends Form {
 
     doSubmit = () => {
 
-        fetch('http://localhost:3001/update_movie', {
+        fetch(`${process.env.api_url}/update_movie`, {
             method: 'post',
             body:    JSON.stringify(this.state.form),
             headers: { 'Content-Type': 'application/json' },

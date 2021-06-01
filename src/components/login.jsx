@@ -18,7 +18,7 @@ export default class LoginForm extends Form {
     };
 
     doSubmit = () => {
-        fetch('http://localhost:3000/auth', {
+        fetch(`${process.env.api_url}/auth`, {
             method: 'POST',
             body:    JSON.stringify(this.state.form),
             headers: {'Content-Type': 'application/json'},

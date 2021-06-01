@@ -17,7 +17,7 @@ class AddOrder extends Component {
 
    async componentDidMount(){
         try {
-            const response = await axios.get('http://localhost:3000/products');
+            const response = await axios.get(`${process.env.api_url}/products`);
             this.setState({products: response.data, loadingBar: false})
         }
         catch (e){
@@ -48,7 +48,7 @@ class AddOrder extends Component {
     handleSubmit = async () => {
     const products = this.state.selectedProducts;
     const active = true;
-    const response = axios.post(`http://localhost:3000/add_order`, {products, active});
+    const response = axios.post(`${process.env.api_url}/add_order`, {products, active});
     if (response.status === 200) this.props.history.push('/orders');
     };
 
